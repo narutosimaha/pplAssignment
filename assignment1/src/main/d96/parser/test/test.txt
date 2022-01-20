@@ -1,0 +1,42 @@
+{
+##
+Foreach (x In 3+4 .. 16/2 [By 5]){
+Out.printInt(i);
+Foreach (x In 5 .. 2) {
+Out.printInt(arr[x]);
+}
+}
+Var x:Int;
+Var r, s: Int;
+r = 2.0;
+Var a, b: Array[Int, 5];
+s = r * r * self.myPI;
+a[0] = s;
+Shape::$getNumOfShape(a+b/2);
+Return 3/4+5;
+Continue;
+Break;
+##
+If (x>5) {
+console.log(3+5/2);
+}
+Elseif (x>2){
+Foreach (k In 5 .. 2) {
+Out.printInt(arr[k]);
+ If(k==3) {Continue;}
+ Else{
+    Shape::$getNumOfShape(a+b/2);
+ }
+}
+}
+Else{
+If(x==1) {Return;}
+Var m:Int;
+Var r, s: Int;
+r = 2.0;
+Var a, b: Array[Int, 5];
+s = r * r * self.myPI;
+a[0] = s;
+
+}
+}

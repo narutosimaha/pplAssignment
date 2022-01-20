@@ -1,0 +1,1 @@
+cd assignment1/src/main/d96/parser/test
