@@ -17,45 +17,25 @@ public interface D96Listener extends ParseTreeListener {
 	 */
 	void exitProgram(D96Parser.ProgramContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link D96Parser#normal_class_or_non}.
+	 * Enter a parse tree produced by {@link D96Parser#class_list}.
 	 * @param ctx the parse tree
 	 */
-	void enterNormal_class_or_non(D96Parser.Normal_class_or_nonContext ctx);
+	void enterClass_list(D96Parser.Class_listContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link D96Parser#normal_class_or_non}.
+	 * Exit a parse tree produced by {@link D96Parser#class_list}.
 	 * @param ctx the parse tree
 	 */
-	void exitNormal_class_or_non(D96Parser.Normal_class_or_nonContext ctx);
+	void exitClass_list(D96Parser.Class_listContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link D96Parser#normal_classes}.
+	 * Enter a parse tree produced by {@link D96Parser#class1}.
 	 * @param ctx the parse tree
 	 */
-	void enterNormal_classes(D96Parser.Normal_classesContext ctx);
+	void enterClass1(D96Parser.Class1Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link D96Parser#normal_classes}.
+	 * Exit a parse tree produced by {@link D96Parser#class1}.
 	 * @param ctx the parse tree
 	 */
-	void exitNormal_classes(D96Parser.Normal_classesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#program_class}.
-	 * @param ctx the parse tree
-	 */
-	void enterProgram_class(D96Parser.Program_classContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#program_class}.
-	 * @param ctx the parse tree
-	 */
-	void exitProgram_class(D96Parser.Program_classContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#normal_class}.
-	 * @param ctx the parse tree
-	 */
-	void enterNormal_class(D96Parser.Normal_classContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#normal_class}.
-	 * @param ctx the parse tree
-	 */
-	void exitNormal_class(D96Parser.Normal_classContext ctx);
+	void exitClass1(D96Parser.Class1Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link D96Parser#inherit_parent}.
 	 * @param ctx the parse tree
@@ -76,36 +56,6 @@ public interface D96Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInside_class(D96Parser.Inside_classContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#inside_program_class}.
-	 * @param ctx the parse tree
-	 */
-	void enterInside_program_class(D96Parser.Inside_program_classContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#inside_program_class}.
-	 * @param ctx the parse tree
-	 */
-	void exitInside_program_class(D96Parser.Inside_program_classContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#inside_normal_class}.
-	 * @param ctx the parse tree
-	 */
-	void enterInside_normal_class(D96Parser.Inside_normal_classContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#inside_normal_class}.
-	 * @param ctx the parse tree
-	 */
-	void exitInside_normal_class(D96Parser.Inside_normal_classContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#non_destructor}.
-	 * @param ctx the parse tree
-	 */
-	void enterNon_destructor(D96Parser.Non_destructorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#non_destructor}.
-	 * @param ctx the parse tree
-	 */
-	void exitNon_destructor(D96Parser.Non_destructorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link D96Parser#method}.
 	 * @param ctx the parse tree
@@ -157,16 +107,6 @@ public interface D96Listener extends ParseTreeListener {
 	 */
 	void exitDestructor(D96Parser.DestructorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link D96Parser#mainfunc}.
-	 * @param ctx the parse tree
-	 */
-	void enterMainfunc(D96Parser.MainfuncContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#mainfunc}.
-	 * @param ctx the parse tree
-	 */
-	void exitMainfunc(D96Parser.MainfuncContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link D96Parser#attribute}.
 	 * @param ctx the parse tree
 	 */
@@ -177,6 +117,16 @@ public interface D96Listener extends ParseTreeListener {
 	 */
 	void exitAttribute(D96Parser.AttributeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link D96Parser#symmetric_var_exp}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymmetric_var_exp(D96Parser.Symmetric_var_expContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#symmetric_var_exp}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymmetric_var_exp(D96Parser.Symmetric_var_expContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link D96Parser#variable_list}.
 	 * @param ctx the parse tree
 	 */
@@ -186,16 +136,6 @@ public interface D96Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVariable_list(D96Parser.Variable_listContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#initialization}.
-	 * @param ctx the parse tree
-	 */
-	void enterInitialization(D96Parser.InitializationContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#initialization}.
-	 * @param ctx the parse tree
-	 */
-	void exitInitialization(D96Parser.InitializationContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link D96Parser#parameter_list}.
 	 * @param ctx the parse tree
@@ -227,6 +167,16 @@ public interface D96Listener extends ParseTreeListener {
 	 */
 	void exitStatement(D96Parser.StatementContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link D96Parser#statement_list}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatement_list(D96Parser.Statement_listContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#statement_list}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatement_list(D96Parser.Statement_listContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link D96Parser#var_const_declar_stment}.
 	 * @param ctx the parse tree
 	 */
@@ -236,6 +186,16 @@ public interface D96Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitVar_const_declar_stment(D96Parser.Var_const_declar_stmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link D96Parser#symmetric_var_exp1}.
+	 * @param ctx the parse tree
+	 */
+	void enterSymmetric_var_exp1(D96Parser.Symmetric_var_exp1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#symmetric_var_exp1}.
+	 * @param ctx the parse tree
+	 */
+	void exitSymmetric_var_exp1(D96Parser.Symmetric_var_exp1Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link D96Parser#assign_stment}.
 	 * @param ctx the parse tree
@@ -256,6 +216,56 @@ public interface D96Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitLhs_assignment(D96Parser.Lhs_assignmentContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link D96Parser#index_expression}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndex_expression(D96Parser.Index_expressionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#index_expression}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndex_expression(D96Parser.Index_expressionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link D96Parser#index_operators}.
+	 * @param ctx the parse tree
+	 */
+	void enterIndex_operators(D96Parser.Index_operatorsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#index_operators}.
+	 * @param ctx the parse tree
+	 */
+	void exitIndex_operators(D96Parser.Index_operatorsContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link D96Parser#scalar_variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterScalar_variable(D96Parser.Scalar_variableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#scalar_variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitScalar_variable(D96Parser.Scalar_variableContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link D96Parser#attribute_access}.
+	 * @param ctx the parse tree
+	 */
+	void enterAttribute_access(D96Parser.Attribute_accessContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#attribute_access}.
+	 * @param ctx the parse tree
+	 */
+	void exitAttribute_access(D96Parser.Attribute_accessContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link D96Parser#static_attribute_access}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatic_attribute_access(D96Parser.Static_attribute_accessContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#static_attribute_access}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatic_attribute_access(D96Parser.Static_attribute_accessContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link D96Parser#if_stment}.
 	 * @param ctx the parse tree
@@ -356,66 +366,6 @@ public interface D96Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBlock_stment(D96Parser.Block_stmentContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#statement_list}.
-	 * @param ctx the parse tree
-	 */
-	void enterStatement_list(D96Parser.Statement_listContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#statement_list}.
-	 * @param ctx the parse tree
-	 */
-	void exitStatement_list(D96Parser.Statement_listContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#index_expression}.
-	 * @param ctx the parse tree
-	 */
-	void enterIndex_expression(D96Parser.Index_expressionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#index_expression}.
-	 * @param ctx the parse tree
-	 */
-	void exitIndex_expression(D96Parser.Index_expressionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#index_operators}.
-	 * @param ctx the parse tree
-	 */
-	void enterIndex_operators(D96Parser.Index_operatorsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#index_operators}.
-	 * @param ctx the parse tree
-	 */
-	void exitIndex_operators(D96Parser.Index_operatorsContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#scalar_variable}.
-	 * @param ctx the parse tree
-	 */
-	void enterScalar_variable(D96Parser.Scalar_variableContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#scalar_variable}.
-	 * @param ctx the parse tree
-	 */
-	void exitScalar_variable(D96Parser.Scalar_variableContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#attribute_access}.
-	 * @param ctx the parse tree
-	 */
-	void enterAttribute_access(D96Parser.Attribute_accessContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#attribute_access}.
-	 * @param ctx the parse tree
-	 */
-	void exitAttribute_access(D96Parser.Attribute_accessContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link D96Parser#static_attribute_access}.
-	 * @param ctx the parse tree
-	 */
-	void enterStatic_attribute_access(D96Parser.Static_attribute_accessContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link D96Parser#static_attribute_access}.
-	 * @param ctx the parse tree
-	 */
-	void exitStatic_attribute_access(D96Parser.Static_attribute_accessContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link D96Parser#data_type}.
 	 * @param ctx the parse tree
@@ -556,6 +506,16 @@ public interface D96Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExp9(D96Parser.Exp9Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link D96Parser#exp10}.
+	 * @param ctx the parse tree
+	 */
+	void enterExp10(D96Parser.Exp10Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link D96Parser#exp10}.
+	 * @param ctx the parse tree
+	 */
+	void exitExp10(D96Parser.Exp10Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link D96Parser#operands}.
 	 * @param ctx the parse tree

@@ -30,12 +30,40 @@ VOIDTYPE: 'void';
 /**
  *--------------------------- 2. Program structure-----------------------------------
  */
-program: normal_class_or_non program_class normal_class_or_non EOF;
+
+
+program: class_list EOF;
+class_list: class1 class_list| class1;
+class1: CLASS ID inherit_parent LCB inside_class RCB;
+
+inherit_parent: COLON id_list | ;
+inside_class: method inside_class | attribute inside_class | ;
+
+
+
+//--------------------METHOD:-------------------
+method: static_method | non_static_method | constructor | destructor;
+static_method: DOLLAR_ID LP parameter_list? RP block_stment;
+non_static_method: ID LP parameter_list? RP block_stment;
+constructor: CONSTRUCTOR LP parameter_list? RP block_stment;
+destructor: DESTRUCTOR LP RP block_stment;
+
+//------------------ATTRIBUTE--------------------
+attribute: (VAL|VAR) variable_list COLON data_type SEMI | (VAL|VAR) symmetric_var_exp SEMI;
+symmetric_var_exp: (ID|DOLLAR_ID) COMMA symmetric_var_exp COMMA exp | (ID|DOLLAR_ID) COLON data_type ASSIGN exp;
+variable_list: (ID | DOLLAR_ID) COMMA variable_list|  (ID | DOLLAR_ID);
+
+
+
+// -----------------------------BACK UP-------------------------------------
+
+/*
+program: normal_class_or_non program_class? normal_class_or_non EOF;
 normal_class_or_non: normal_classes |  ;
 normal_classes: normal_classes normal_class| normal_class;
 
 program_class: CLASS PROGRAM LCB inside_program_class RCB;
-normal_class: CLASS ID inherit_parent LCB inside_class RCB;
+normal_class: CLASS ID inherit_parent LCB inside_normal_class RCB;
 
 inherit_parent: COLON id_list | ;
 
@@ -46,35 +74,18 @@ inside_program_class: inside_normal_class mainfunc non_destructor
                       | non_destructor mainfunc inside_normal_class;
 inside_normal_class: method inside_normal_class | attribute inside_normal_class | destructor non_destructor |;
 non_destructor: method non_destructor | attribute non_destructor | ;
-
-
+*/
 
 //----------------------------------------
 // METHOD:
+/*
 method: static_method | non_static_method | constructor;
 static_method: DOLLAR_ID LP parameter_list? RP LCB STATEMENT RCB;
 non_static_method: ID LP parameter_list? RP LCB STATEMENT RCB;
 constructor: CONSTRUCTOR LP parameter_list? RP LCB STATEMENT RCB;
 destructor: DESTRUCTOR LP RP LCB STATEMENT RCB;
 mainfunc: MAIN LP RP LCB STATEMENT RCB;
-
-//----------------------------------------
-// ATTRIBUTE:
-
-attribute: (VAL|VAR) variable_list COLON data_type initialization? SEMI;
-
-variable_list: (ID | DOLLAR_ID) COMMA variable_list|  (ID | DOLLAR_ID);
-initialization: ASSIGN exp_list;
-
-/*
-express_list;
 */
-
-
-
-
-
-
 
 
 
@@ -98,13 +109,22 @@ statement: var_const_declar_stment
            | block_stment
            | method_invo_stment
            | return_stment;
+statement_list:statement statement_list|;
 
-var_const_declar_stment: (VAL|VAR) id_list COLON data_type initialization? SEMI;
+
+var_const_declar_stment: (VAL|VAR) id_list COLON data_type SEMI | (VAL|VAR) symmetric_var_exp1 SEMI;
+symmetric_var_exp1: ID COMMA symmetric_var_exp1 COMMA exp | ID COLON data_type ASSIGN exp;
 
 
 assign_stment: lhs_assignment ASSIGN exp SEMI;
 lhs_assignment: scalar_variable | index_expression;
+index_expression : exp index_operators;
+index_operators :  LSB exp RSB
+                   | LSB exp RSB index_operators;
 
+scalar_variable: ID | attribute_access | static_attribute_access;      // May add more
+attribute_access: exp DOT ID;
+static_attribute_access: ID DOUBCOLON DOLLAR_ID;
 
 if_stment: IF LP exp RP block_stment else_if;
 else_if: ELSEIF LP exp RP block_stment else_if | ELSE block_stment | ;
@@ -124,18 +144,12 @@ static_invok_method: ID DOUBCOLON static_func_call;
 
 
 block_stment: LCB statement_list RCB;
-statement_list:statement statement_list|;
+
 
 
 //--------PlaceHolder-------------
 
-index_expression : exp index_operators;
-index_operators :  LSB exp RSB
-                   | LSB exp RSB index_operators;
 
-scalar_variable: ID | attribute_access | static_attribute_access;      // May add more
-attribute_access: exp DOT ID;
-static_attribute_access: ID DOUBCOLON DOLLAR_ID;
 
 /**
  * ---------------------------4. TYPE AND VALUE---------------------------------------
@@ -143,7 +157,7 @@ static_attribute_access: ID DOUBCOLON DOLLAR_ID;
 data_type: array_type | primitive_type | class_exp;
 array_type: ARRAY LSB (primitive_type | array_type) COMMA DECIMAL_NO_ZERO RSB;
 primitive_type: BOOLEAN | INT | FLOAT | STRING;
-class_exp: NEW ID LP exp_list? RP;
+class_exp: ID;
 
 
 
@@ -162,14 +176,10 @@ exp4: exp4 (MUL|DIV|REM) exp5 | exp5;
 exp5: NOT exp5 | exp6;
 exp6: SUB exp6 | exp7;
 exp7: exp7 LSB exp RSB | exp8;
+exp8: exp8 DOT exp9 |exp9;
 //index_operators: LSB exp RSB | LSB exp RSB index_operators;
-exp8: exp8 DOT exp9  | ID DOUBCOLON static_operands |exp9;
-exp9: class_exp |operands;
-
-
-
-
-
+exp9: ID DOUBCOLON static_operands |exp10;
+exp10: NEW func_call |operands;
 
 
 operands
@@ -196,7 +206,13 @@ exp_list: exp COMMA exp_list |exp;
 
 // ---5-6---
 
-literal:integer_literal | FLOAT_LITERAL | boolean_literal | STRING_LITERAL;
+literal:integer_literal
+        | FLOAT_LITERAL
+        | boolean_literal
+        | STRING_LITERAL
+        | indexed_array_literal
+        | NULL;
+        //|multi_array_literal;
 
 indexed_array_literal: ARRAY LP exp_list RP;
 
@@ -227,8 +243,8 @@ BIN: '0'[b|B]('0'|'1'[01]*('_'[01]+)*);
 
 FLOAT_LITERAL:INTEGER_PART DECIMAL_PART EXPONENT_PART | INTEGER_PART DECIMAL_PART | DECIMAL_PART EXPONENT_PART | INTEGER_PART EXPONENT_PART ;
 fragment INTEGER_PART: '0'|[1-9][0-9]*('_'[0-9]+)*;
-fragment EXPONENT_PART: [eE][-+]? INTEGER_PART;
-fragment DECIMAL_PART: '.'([0-9]+'_')*[0-9]*[1-9];   // Propaly will be fixed
+fragment EXPONENT_PART: [eE][-+]? [0-9]+;
+fragment DECIMAL_PART: '.'[0-9]*;   // Propaly will be fixed
 
 boolean_literal: TRUE | FALSE;
 
@@ -248,8 +264,6 @@ fragment ESC_SEQ: '\\' [btnfr'\\];
  * Ulities
  */
 
-PROGRAM: 'Program';
-MAIN: 'main';
 STATEMENT: 'statement'; //STATEMENT placeholder
 
 

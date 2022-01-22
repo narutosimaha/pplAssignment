@@ -27,49 +27,25 @@ public class D96BaseListener implements D96Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormal_class_or_non(D96Parser.Normal_class_or_nonContext ctx) { }
+	@Override public void enterClass_list(D96Parser.Class_listContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormal_class_or_non(D96Parser.Normal_class_or_nonContext ctx) { }
+	@Override public void exitClass_list(D96Parser.Class_listContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNormal_classes(D96Parser.Normal_classesContext ctx) { }
+	@Override public void enterClass1(D96Parser.Class1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNormal_classes(D96Parser.Normal_classesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterProgram_class(D96Parser.Program_classContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitProgram_class(D96Parser.Program_classContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNormal_class(D96Parser.Normal_classContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNormal_class(D96Parser.Normal_classContext ctx) { }
+	@Override public void exitClass1(D96Parser.Class1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -94,42 +70,6 @@ public class D96BaseListener implements D96Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInside_class(D96Parser.Inside_classContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInside_program_class(D96Parser.Inside_program_classContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInside_program_class(D96Parser.Inside_program_classContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInside_normal_class(D96Parser.Inside_normal_classContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInside_normal_class(D96Parser.Inside_normal_classContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterNon_destructor(D96Parser.Non_destructorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitNon_destructor(D96Parser.Non_destructorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -195,18 +135,6 @@ public class D96BaseListener implements D96Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMainfunc(D96Parser.MainfuncContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitMainfunc(D96Parser.MainfuncContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterAttribute(D96Parser.AttributeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -219,6 +147,18 @@ public class D96BaseListener implements D96Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSymmetric_var_exp(D96Parser.Symmetric_var_expContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSymmetric_var_exp(D96Parser.Symmetric_var_expContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariable_list(D96Parser.Variable_listContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -226,18 +166,6 @@ public class D96BaseListener implements D96Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVariable_list(D96Parser.Variable_listContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInitialization(D96Parser.InitializationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInitialization(D96Parser.InitializationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -279,6 +207,18 @@ public class D96BaseListener implements D96Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterStatement_list(D96Parser.Statement_listContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatement_list(D96Parser.Statement_listContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVar_const_declar_stment(D96Parser.Var_const_declar_stmentContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -286,6 +226,18 @@ public class D96BaseListener implements D96Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitVar_const_declar_stment(D96Parser.Var_const_declar_stmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterSymmetric_var_exp1(D96Parser.Symmetric_var_exp1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSymmetric_var_exp1(D96Parser.Symmetric_var_exp1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -310,6 +262,66 @@ public class D96BaseListener implements D96Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitLhs_assignment(D96Parser.Lhs_assignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIndex_expression(D96Parser.Index_expressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIndex_expression(D96Parser.Index_expressionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIndex_operators(D96Parser.Index_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIndex_operators(D96Parser.Index_operatorsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterScalar_variable(D96Parser.Scalar_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitScalar_variable(D96Parser.Scalar_variableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAttribute_access(D96Parser.Attribute_accessContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAttribute_access(D96Parser.Attribute_accessContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatic_attribute_access(D96Parser.Static_attribute_accessContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatic_attribute_access(D96Parser.Static_attribute_accessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -430,78 +442,6 @@ public class D96BaseListener implements D96Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBlock_stment(D96Parser.Block_stmentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStatement_list(D96Parser.Statement_listContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStatement_list(D96Parser.Statement_listContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterIndex_expression(D96Parser.Index_expressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIndex_expression(D96Parser.Index_expressionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterIndex_operators(D96Parser.Index_operatorsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitIndex_operators(D96Parser.Index_operatorsContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterScalar_variable(D96Parser.Scalar_variableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitScalar_variable(D96Parser.Scalar_variableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAttribute_access(D96Parser.Attribute_accessContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAttribute_access(D96Parser.Attribute_accessContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterStatic_attribute_access(D96Parser.Static_attribute_accessContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitStatic_attribute_access(D96Parser.Static_attribute_accessContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -670,6 +610,18 @@ public class D96BaseListener implements D96Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExp9(D96Parser.Exp9Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExp10(D96Parser.Exp10Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExp10(D96Parser.Exp10Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
