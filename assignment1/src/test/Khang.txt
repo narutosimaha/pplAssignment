@@ -1,0 +1,368 @@
+#    def test_comment_1(self):
+#         test = """ ##Khang is my name## """
+#         expect = "<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 1'))
+#
+#     def test_comment_2(self):
+#         test = """ ##khang \n\b\f\r\t \\## """
+#         expect = "<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 2'))
+#
+#     def test_comment_3(self):
+#         test = """ ######## """
+#         expect = "<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 3'))
+#
+#     def test_comment_4(self):
+#         test = """ ##"My name is khang \\n"## """
+#         expect = "<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 4'))
+#
+#     def test_comment_5(self):
+#         test = """ ##  "My name is khang \\n"
+#             hello world
+#             ##
+#         """
+#         expect = "<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 5'))
+#
+#     def test_comment_6(self):
+#         test = """ ##### """
+#         expect = "Error Token #"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 6'))
+#
+#     def test_comment_7(self):
+#         test = """ ####khang#### """
+#         expect = "khang,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 7'))
+#
+#     def test_comment_8(self):
+#         test = """ ##
+#          #khang#
+#          k
+#          h
+#          \n\b#//
+#          ##
+#          """
+#         expect = "<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 8'))
+#
+#     def test_comment_9(self):
+#         test = """
+#          ##
+#          khangro\n
+#          #
+#          ###
+#          khang
+#          """
+#         expect = "Error Token #"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 9'))
+#
+#     def test_comment_10(self):
+#         test = """ khang ##
+#         \n abcd ED
+#         ##
+#         PPL
+#         """
+#         expect = "khang,PPL,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 10'))
+#
+#     def test_id_11(self):
+#         test = """khang Ppl _dinhkout khang123"""
+#         expect = "khang,Ppl,_dinhkout,khang123,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 11'))
+#
+#     def test_id_12(self):
+#         test = """1khang__"""
+#         expect = "1,khang__,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 12'))
+#
+#     def test_id_13(self):
+#         test = """$khang $123 $__12__"""
+#         expect = "$khang,$123,$__12__,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 13'))
+#
+#     def test_id_14(self):
+#         test = """khang__khang _123kh__ $012___456_7"""
+#         expect = "khang__khang,_123kh__,$012___456_7,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 14'))
+#
+#     def test_id_15(self):
+#         test = """$$khang $ """
+#         expect = "Error Token $"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 15'))
+#
+#     def test_id_16(self):
+#         test = """$____ ____ """
+#         expect = "$____,____,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 16'))
+#
+#     def test_id_17(self):
+#         test = """$123 _$1234khang """
+#         expect = "$123,_,$1234khang,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 17'))
+#
+#     def test_keyword_18(self):
+#         test = """Break Continue If Elseif Else """
+#         expect = "Break,Continue,If,Elseif,Else,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 18'))
+#
+#     def test_integer_19(self):
+#         test = """123 456 120 0"""
+#         expect = "123,456,120,0,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 19'))
+#
+#     def test_integer_20(self):
+#         test = """123_456_789 1_2_3_4 567_7"""
+#         expect = "123456789,1234,5677,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 20'))
+#
+#     def test_integer_21(self):
+#         test = """123__45 0_123"""
+#         expect = "123,__45,0,_123,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 21'))
+#
+#     def test_integer_22(self):
+#         test = """0000"""
+#         expect = "00,00,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 22'))
+#
+#     def test_integer_23(self):
+#         test = """0x123 0XABC 0x678"""
+#         expect = "0x123,0XABC,0x678,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 23'))
+#
+#     def test_integer_24(self):
+#         test = """0x123_456 0X0 0xA_123_CF"""
+#         expect = "0x123456,0X0,0xA123CF,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 23'))
+#
+#     def test_integer_25(self):
+#         test = """0x01 0x_0"""
+#         expect = "0x0,1,0,x_0,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 25'))
+#
+#     def test_integer_26(self):
+#         test = """0x00 00x00"""
+#         expect = "0x0,0,00,x00,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 26'))
+#
+#     def test_integer_27(self):
+#         test = """000 0b0 0b100_1100"""
+#         expect = "00,0,0b0,0b1001100,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 27'))
+#
+#     def test_integer_28(self):
+#         test = """0123_456_7 000 0_00 00_00"""
+#         expect = "01234567,00,0,0,_00,00,_00,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 28'))
+#
+#     def test_integer_29(self):
+#         test = """0B11_1100 0b124 0xABC_DEF_GH """
+#         expect = "0B111100,0b1,24,0xABCDEF,_GH,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 29'))
+#
+#     def test_integer_30(self):
+#         test = """0b00B0 0x00X0 0567878787 """
+#         expect = "0b0,0B0,0x0,0X0,0567,878787,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 30'))
+#
+#     def test_string_31(self):
+#         test = """ "khang" """
+#         expect = "khang,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 31'))
+#
+#     def test_string_32(self):
+#         test = """ "my name is khang" """
+#         expect = "my name is khang,<EOF>"
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 32'))
+#
+#     def test_string_33(self):
+#         test = """ "khang \n" """
+#         expect = """Unclosed String: khang """
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 33'))
+#
+#     def test_string_34(self):
+#         test = """ "khang\nkhang" """
+#         expect = """Unclosed String: khang"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 34'))
+#
+#     def test_string_35(self):
+#         test = """ "khang"""
+#         expect = """Unclosed String: khang"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 35'))
+#
+#     def test_string_36(self):
+#         test = """ "aaa\\pbb """
+#         expect = """Illegal Escape In String: aaa\\p"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 36'))
+#
+#     def test_string_37(self):
+#         test = """ "khang \\b \\f \\r\\t" """
+#         expect = """khang \\b \\f \\r\\t,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 37'))
+#
+#     def test_string_38(self):
+#         test = """ "khang" " """
+#         expect = """khang,Unclosed String:  """
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 38'))
+#
+#     def test_string_39(self):
+#         test = """ "This is a string containing tab \\t" """
+#         expect = """This is a string containing tab \\t,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 39'))
+#
+#     def test_string_40(self):
+#         test = """ "aa\naa" """
+#         expect = """Unclosed String: aa"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 40'))
+#
+#     def test_string_41(self):
+#         test = """ "khang\\ " """
+#         expect = """Illegal Escape In String: khang\\ """
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 41'))
+#
+#     def test_string_42(self):
+#         test = """ "khang\\\\" """
+#         expect = """khang\\\\,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 42'))
+#
+#     def test_string_43(self):
+#         test = """ "khang'hana' " """
+#         expect = """khang'hana' ,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 43'))
+#
+#     def test_string_44(self):
+#         test = """ "My name is '"khang'"?" """
+#         expect = """My name is '"khang'"?,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 44'))
+#
+#     def test_float_45(self):
+#         test = """ 1.001 2.56 3.24"""
+#         expect = """1.001,2.56,3.24,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 45'))
+#
+#     def test_float_46(self):
+#         test = """ 1. 2. """
+#         expect = """1.,2.,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 46'))
+#
+#     def test_float_47(self):
+#         test = """ 123_456.01 1.00000 123_45.0000 """
+#         expect = """123456.01,1.00000,12345.0000,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 47'))
+#
+#     def test_float_48(self):
+#         test = """ 123e+10 145_45e-10 123.e-10"""
+#         expect = """123e+10,14545e-10,123.e-10,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 48'))
+#
+#     def test_float_49(self):
+#         test = """ 123.12e+15 124.1e-00012"""
+#         expect = """123.12e+15,124.1e-00012,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 49'))
+#
+#     def test_float_50(self):
+#         test = """ e+15 e-12"""
+#         expect = """e,+,15,e,-,12,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 50'))
+#
+#     def test_float_51(self):
+#         test = """ 123e 456e"""
+#         expect = """123,e,456,e,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 51'))
+#
+#     def test_float_52(self):
+#         test = """ 123.456_534 567.12_1_1"""
+#         expect = """123.456,_534,567.12,_1_1,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 52'))
+#
+#     def test_float_53(self):
+#         test = """ 01.e-12 001.2e+13"""
+#         expect = """01,.e-12,00,1.2e+13,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 53'))
+#
+#     def test_float_54(self):
+#         test = """ 12e-12_34_56"""
+#         expect = """12e-12,_34_56,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 54'))
+#
+#     def test_float_55(self):
+#         test = """ .123e-12"""
+#         expect = """.123e-12,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 55'))
+#
+#     def test_string_56(self):
+#         test = """ "khang\b """
+#         expect = """Unclosed String: khang\b """
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 56'))
+#
+#     def test_string_57(self):
+#         test = """ "khang\b" """
+#         expect = """khang\b,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 57'))
+#
+#     def test_string_58(self):
+#         test = """ "khang\b """
+#         expect = """Unclosed String: khang\b """
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 58'))
+#
+#     def test_id_59(self):
+#         test = """ Ifelse """
+#         expect = """Ifelse,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 59'))
+#
+#     def test_id_60(self):
+#         test = """ 12abc """
+#         expect = """12,abc,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 60'))
+#
+#     def test_id_61(self):
+#         test = """ aAsVN3 """
+#         expect = """aAsVN3,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 61'))
+#
+#     def test_id_62(self):
+#         test = """ 123a123 """
+#         expect = """123,a123,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 62'))
+#
+#     def test_op_63(self):
+#         test = """ & & """
+#         expect = """Error Token &"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 63'))
+#
+#     def test_op_64(self):
+#         test = """ && """
+#         expect = """&&,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 64'))
+#
+#     def test_op_65(self):
+#         test = """ && """
+#         expect = """&&,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 65'))
+#
+#     def test_op_66(self):
+#         test = """ != => """
+#         expect = """!=,=,>,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 66'))
+#
+#     def test_op_67(self):
+#         test = """ == . """
+#         expect = """==,.,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 67'))
+#
+#     def test_op_68(self):
+#         test = """ ==. """
+#         expect = """==.,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 68'))
+#
+#     def test_op_69(self):
+#         test = """ | | """
+#         expect = """Error Token |"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 69'))
+#
+#     def test_op_70(self):
+#         test = """ || """
+#         expect = """||,<EOF>"""
+#         self.assertTrue(TestLexer.test(test, expect, 'Test 70'))

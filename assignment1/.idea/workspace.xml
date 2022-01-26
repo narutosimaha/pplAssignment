@@ -7,15 +7,14 @@
     <list default="true" id="0e12e1d5-9aa8-4efa-8e8a-8c7e5f435df4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/D96.g4" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/d96/parser/test/D96.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96BaseListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.interp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.tokens" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Listener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Parser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Lexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/d96/parser/test/antlr_test/D96Parser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/d96/parser/test/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/d96/parser/test/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/LexerSuite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/LexerSuite.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +34,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Cứu tinh/cse-ppl-master/cse-ppl-master/Assignments/assignment_1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Programming code/bkool" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

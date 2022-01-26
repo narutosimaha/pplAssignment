@@ -122,14 +122,14 @@ index_expression : exp index_operators;
 index_operators :  LSB exp RSB
                    | LSB exp RSB index_operators;
 
-scalar_variable: ID | attribute_access | static_attribute_access;      // May add more
+scalar_variable: DOLLAR_ID|ID | attribute_access | static_attribute_access;      // May add more
 attribute_access: exp DOT ID;
 static_attribute_access: ID DOUBCOLON DOLLAR_ID;
 
 if_stment: IF LP exp RP block_stment else_if;
 else_if: ELSEIF LP exp RP block_stment else_if | ELSE block_stment | ;
 
-for_in_stment: FOREACH LP scalar_variable IN exp DOTDOT exp (LSB BY exp RSB)? RP block_stment;
+for_in_stment: FOREACH LP scalar_variable IN exp DOT DOT exp (BY exp)? RP block_stment;
 
 break_stment: BREAK SEMI;
 
@@ -168,8 +168,8 @@ class_exp: ID;
  */
 
 
-exp: exp (CONCAT|STR_EQUAL) exp |exp1;
-exp1: exp1 (EQUAL|NEQ|LT|GT|LTE|GTE) exp1 | exp2;
+exp: exp1 (CONCAT|STR_EQUAL) exp1 |exp1;
+exp1: exp2 (EQUAL|NEQ|LT|GT|LTE|GTE) exp2 | exp2;
 exp2: exp2 (AND | OR) exp3 | exp3;
 exp3: exp3 ( ADD | SUB ) exp4 | exp4;
 exp4: exp4 (MUL|DIV|REM) exp5 | exp5;
@@ -178,9 +178,10 @@ exp6: SUB exp6 | exp7;
 exp7: exp7 LSB exp RSB | exp8;
 exp8: exp8 DOT exp9 |exp9;
 //index_operators: LSB exp RSB | LSB exp RSB index_operators;
-exp9: ID DOUBCOLON static_operands |exp10;
-exp10: NEW func_call |operands;
-
+//exp9: ID DOUBCOLON static_operands |exp10;
+//exp10: NEW func_call |operands;
+exp9: exp10 DOUBCOLON exp10 |exp10;
+exp10: NEW exp10 |operands;
 
 operands
 	: literal
@@ -188,6 +189,7 @@ operands
 	| func_call
 	| LP exp RP
 	| SELF
+	| static_operands
 	;
 
 static_operands: DOLLAR_ID | static_func_call;
@@ -234,7 +236,7 @@ DECIMAL_NO_ZERO:[1-9] [0-9]* ('_' [0-9]+)* ;
 DECIMAL: '0'|[1-9][0-9]*;
 
 //HEXA: '0x'('0'|[1-9A-F][0-9A-F]* ('_'[0-9A-F]+)* { self.text = self.text.replace("_", "") });
-HEXA: '0x'('0'|[1-9A-F][0-9A-F]*('_'[0-9A-F]+)*);
+HEXA: '0'[xX]('0'|[1-9A-F][0-9A-F]* ('_'[0-9A-F]+)*);
 
 //OCTAL: '0'('0'|[1-7][0-7]*('_'[0-7]+)*) ;
 OCTAL: '0'('0'|[1-7][0-7]*('_'[0-7]+)*);
@@ -255,7 +257,8 @@ STRING_LITERAL: '"' STR_CHAR* '"';
 	           }
 	           ;
 */
-fragment STR_CHAR: ~[\b\t\n\f\r"'\\] | ESC_SEQ | '\'"';
+fragment STR_CHAR: ~[\n\r"\\] | ESC_SEQ | '\'"';
+//fragment STR_CHAR: ~[\n\r"\\] | ESC_SEQ ;
 fragment ESC_SEQ: '\\' [btnfr'\\];
 
 //--------------------------------------------------------------------
@@ -372,25 +375,43 @@ RSB: ']'; // Right Square Bracket
 SEMI: ';'; // Semicolon
 COMMA: ','; // Comma
 COLON: ':'; // Colon
-DOTDOT: '..'; // Dot Dot should be before Dot
 
-DOLLAR: '$'; // Dollar sign
+
 
 DOLLAR_ID: '$'[a-zA-Z0-9_]+;
 ID: [a-zA-Z_][a-zA-Z_0-9]*;
 
 
 
-UNCLOSE_STRING: '"' STR_CHAR* ( [\n\f\r] | EOF );
+UNCLOSE_STRING: '"' STR_CHAR* ( [\n\r] | EOF );
 /*	{
 		y = str(self.text)
-		possible = ['\b', '\t', '\n', '\f', '\r', '"', "'", '\\']
+		possible = ['\n', '\r']
 		if y[-1] in possible:
 			raise UncloseString(y[1:-1])
 		else:
 			raise UncloseString(y[1:])
 	}
 	;
+*/
+
+/*
+STRINGLIT: '"' CHAR* '"'
+	{
+    	self.text = self.text[1:-1]
+	};
+ILLEGAL_ESCAPE:
+	'"' CHAR* ESC_ILLEGAL {
+                raise IllegalEscape(self.text[1:])
+            };
+UNCLOSE_STRING:
+	'"' CHAR* {
+                raise UncloseString(self.text[1:])
+            };
+fragment CHAR: '\'"' | ~[\b\t\n\f\r"\\] | ESC;
+fragment ESC: '\\' [btnfr'\\];
+fragment ESC_ILLEGAL: '\\' ~[btnfr'\\] | '\'' ~'"' | '\\';
+
 */
 
 ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL;
@@ -401,7 +422,7 @@ ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL;
 	}
 	;
 */
-fragment ESC_ILLEGAL: '\\' ~[btnfr'\\]  ;
+fragment ESC_ILLEGAL:  '\\' ~[btnfr'\\] | '\\' ;
 
 
 
